@@ -1,0 +1,14 @@
+body { font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto; padding: 1rem; line-height: 1.5; }
+header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #4a7c59; padding-bottom: 0.5rem; }
+header h1 a { text-decoration: none; color: #2d5a3d; }
+nav a { margin-left: 1rem; }
+.error { color: #c0392b; background: #fadbd8; padding: 0.5rem; border-radius: 4px; }
+.btn, button { background: #4a7c59; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; }
+.btn:hover, button:hover { background: #2d5a3d; }
+.danger { background: #c0392b; }
+.posts li { margin: 0.5rem 0; }
+.meta, small { color: #666; }
+.content, .comment { margin: 1rem 0; padding: 0.5rem; background: #f8f9fa; border-radius: 4px; }
+form label { display: block; margin: 0.75rem 0; }
+input, textarea { width: 100%; padding: 0.5rem; box-sizing: border-box; }
+footer { margin-top: 2rem; border-top: 1px solid #ddd; padding-top: 0.5rem; color: #666; text-align: center; }

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Logowanie{% endblock %}
+{% block content %}
+    <h2>Logowanie</h2>
+    {% if error %}<p class="error">{{ error }}</p>{% endif %}
+    <form method="post">
+        <input type="hidden" name="csrftoken" value="{{ request.state.csrftoken }}">
+        <label>Nazwa użytkownika<br><input type="text" name="username" required></label>
+        <label>Hasło<br><input type="password" name="password" required></label>
+        <button type="submit">Zaloguj</button>
+    </form>
+{% endblock %}

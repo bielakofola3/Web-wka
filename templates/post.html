@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+    <article>
+        <h2>{{ post.title }}</h2>
+        <p class="meta">przez {{ post.author.username }} · {{ post.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+        <div class="content">{{ post.content | e }}</div>
+        {% if user and user.id == post.author_id %}
+            <form method="post" action="/post/{{ post.id }}/delete" style="display:inline">
+                <input type="hidden" name="csrftoken" value="{{ request.state.csrftoken }}">
+                <button type="submit" class="danger">Usuń post</button>
+            </form>
+        {% endif %}
+    </article>
+    <h3>Komentarze</h3>
+    {% for c in comments %}
+        <div class="comment">
+            <strong>{{ c.author.username }}</strong>
+            <p>{{ c.content | e }}</p>
+            <small>{{ c.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+        </div>
+    {% else %}
+        <p>Brak komentarzy.</p>
+    {% endfor %}
+    {% if user %}
+        <form method="post" action="/post/{{ post.id }}/comment">
+            <input type="hidden" name="csrftoken" value="{{ request.state.csrftoken }}">
+            <textarea name="content" required minlength="2" placeholder="Dodaj komentarz..."></textarea>
+            <button type="submit">Dodaj</button>
+        </form>
+    {% else %}
+        <p><a href="/login">Zaloguj się</a>, aby skomentować.</p>
+    {% endif %}
+{% endblock %}

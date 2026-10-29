@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Nowy post{% endblock %}
+{% block content %}
+    <h2>Nowy post</h2>
+    <form method="post">
+        <input type="hidden" name="csrftoken" value="{{ request.state.csrftoken }}">
+        <label>Tytuł<br><input type="text" name="title" required minlength="3" maxlength="200"></label>
+        <label>Treść<br><textarea name="content" required minlength="10" rows="10"></textarea></label>
+        <button type="submit">Opublikuj</button>
+    </form>
+{% endblock %}

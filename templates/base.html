@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}MycoForum{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1><a href="/">🍄 MycoForum</a></h1>
+        <nav>
+            {% if user %}
+                <span>Witaj, {{ user.username }}</span>
+                <a href="/post/new">Nowy post</a>
+                <a href="/logout">Wyloguj</a>
+            {% else %}
+                <a href="/login">Zaloguj</a>
+                <a href="/register">Rejestracja</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>Bezpieczne forum dla pasjonatów grzybów · ASVS 5.0</p>
+    </footer>
+</body>
+</html>

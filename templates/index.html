@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Forum grzybowe{% endblock %}
+{% block content %}
+    <h2>Najnowsze posty</h2>
+    {% if user %}
+        <a href="/post/new" class="btn">Nowy post</a>
+    {% endif %}
+    <ul class="posts">
+        {% for post in posts %}
+            <li>
+                <a href="/post/{{ post.id }}">{{ post.title }}</a>
+                <small>przez {{ post.author.username }} · {{ post.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+            </li>
+        {% else %}
+            <li>Brak postów. Bądź pierwszy!</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
