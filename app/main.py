@@ -28,12 +28,21 @@ app.add_middleware(
     session_cookie="myco_session",
     max_age=3600,  # 1h
     same_site="lax",
-    https_only=True,  # W prod True; lokalnie ustaw False jeśli HTTP
+    https_only=False,  # W prod True; lokalnie ustaw False jeśli HTTP
     path="/",
 )
 
 # CSRF
-app.add_middleware(CSRFMiddleware, secret=CSRF_SECRET)
+#app.add_middleware(
+#    CSRFMiddleware,
+#    secret=CSRF_SECRET,
+#    sensitive_cookies={"myco_session"},   # nazwa ciasteczka sesji
+#    cookie_name="csrftoken",
+#    header_name="x-csrftoken",
+#    cookie_secure=False,                  # False na localhost
+#    cookie_samesite="lax",
+#    cookie_httponly=False,
+#)
 
 # Rate limiting
 limiter = Limiter(key_func=get_remote_address)
